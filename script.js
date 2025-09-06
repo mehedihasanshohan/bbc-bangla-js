@@ -8,28 +8,19 @@ function renderCategory() {
   .catch(err => console.error("Error fetching data:", err));
 }
 
-function displayCategory(articles) {
-  // console.log(articles);
-  const newsContainer = document.getElementById('category-container');
-  newsContainer.innerHTML = "";
+function displayCategory(categories) {
+  const categoryContainer = document.getElementById('category-container');
+  categoryContainer.innerHTML = "";
 
-  articles.forEach(article => {
-    // console.log(article);
-    const newsItem = document.createElement('li');
-    newsItem.classList.add(
-      'p-1',
-      'm-4',
-      'cursor-pointer',
-      'text-xl',
-      'font-bold',
-      'text-white'
-    );
-    newsItem.textContent = article.title;
-    newsContainer.appendChild(newsItem);
+  categories.forEach(category => {
+    categoryContainer.innerHTML += `
+    <li id="${category.id}" class="p-1 m-4 cursor-pointer text-xl font-bold text-white hover:border-b-4">${category.title}
+    </li>
+    `
   });
 
   // acitve category
-  newsContainer.addEventListener('click', (e) => {
+  categoryContainer.addEventListener('click', (e) => {
     //removed indicator from all item
     const allLi = document.querySelectorAll('li');
     allLi.forEach(li => {
