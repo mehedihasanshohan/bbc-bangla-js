@@ -49,15 +49,22 @@ const showNewsByCategory = (news) => {
   newsContainer.innerHTML = "";
 
   news.articles.forEach(article => {
-    newsContainer.innerHTML += `
+    console.log(article);
+    if(article ){
+      newsContainer.innerHTML += `
       <div class="border p-4 rounded-lg shadow-lg">
         <img src="${article.image.srcset[5].url}" alt="${article.title}" class="w-full h-48 object-cover rounded-md mb-4">
         <h2 class="text-xl font-bold mb-2">${article.title}</h2>
-      </div>
-
-`})
-
+        <h2 class="text-md font-gray-300 font-bold mb-2">${article.time}</h2>
+        <button class='btn bg-gray-400 rounded-lg py-2 px-4'>Bookmark</button>
+        </div>
+      `
+    } else {
+      newsContainer.innerHTML  = `<h2 class="text-2xl font-bold">No news found in this category</h2>`;
+    }}
+)
 }
 
 
 renderCategory();
+loadNewsByCategory('main'); //default category

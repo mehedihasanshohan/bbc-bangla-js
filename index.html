@@ -17,7 +17,7 @@
 </style>
 <body>
   <header>
-    <nav class="max-w-7xl mx-auto bg-red-800 text-white p-4 flex justify-between items-center">
+    <nav class="max-w-full mx-auto bg-red-800 text-white p-4 flex justify-between items-center">
       <div class="text-2xl font-bold" >BBC বাংলা</div>
       <ul class="flex space-x-4" id="category-container">
       </ul>
@@ -25,11 +25,17 @@
         <i class="fas fa-search"></i>
       </div>
   </header>
-  <main class="max-w-7xl mx-auto p-4">
-    <section id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <main class="max-w-7xl mx-auto p-4 grid grid-cols-4 gap-4">
+    <div id="news-container" class="grid grid-cols-3 col-span-3 gap-4">
       <!-- News articles will be rendered here -->
+    </div>
+    <div id="bookmark-container" class="border p-4 rounded-lg shadow-lg">
+      <h2 class="text-xl font-bold mb-4">Bookmarked Articles</h2>
+      <ul id="bookmark-list" class="list-disc list-inside">
+        <!-- Bookmarked articles will be rendered here -->
+      </ul>
 
-    </section>
+    </div>
   </main>
   <script src="./script.js"></script>
 </body>
