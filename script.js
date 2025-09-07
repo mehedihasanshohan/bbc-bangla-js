@@ -61,7 +61,7 @@ const showNewsByCategory = (news) => {
        <div id=${article.id}>
         <h2 class="text-xl font-bold mb-2">${article.title}</h2>
         <h2 class="text-md font-gray-300 font-bold mb-2">${article.time}</h2>
-        <button class='btn bg-gray-400 rounded-lg py-2 px-4'>Bookmark</button>
+        <button class='btn bg-gray-400 rounded-lg py-2 px-4 cursor-pointer'>Bookmark</button>
        </div>
       </div>
       `
@@ -95,11 +95,19 @@ const showBookmark = (bookmarks) => {
   bookmarkContainer.innerHTML = "";
   bookmarks.forEach(bookmark => {
     bookmarkContainer.innerHTML += `
-    <li><a href="#" class="text-blue-500 hover:underline">${bookmark.title}</a></li>
+    <div class="border rounded-lg p-2 mb-2 shadow-xl">
+    <h1>${bookmark.title}</h1>
+    <button class="bg-red-500 text-white rounded-lg py-1 px-2 mt-2 cursor-pointer" onclick="removeBookmark('${bookmark.id}')">Remove</button>
+    </div>
     `
   })
 }
 
+const removeBookmark = (id) => {
+  // console.log('remove bookmark', id);
+  bookmarks = bookmarks.filter(bookmark => bookmark.id !== id);
+  showBookmark(bookmarks);
+}
 
 
 renderCategory();
