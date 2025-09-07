@@ -69,6 +69,7 @@ const showNewsByCategory = (news) => {
 newsContainer.addEventListener('click', (e) => {
   if(e.target.classList.contains('btn')){
     console.log('bookmark btn clicked');
+    console.log(e.target.parentNode.children[1].innerText);
 }})
 
 
