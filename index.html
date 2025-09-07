@@ -29,8 +29,11 @@
     <div id="news-container" class="grid grid-cols-3 col-span-3 gap-4">
       <!-- News articles will be rendered here -->
     </div>
-    <div class="border p-4 rounded-lg shadow-lg">
-      <h2 class="text-xl font-bold mb-4">Bookmarked Articles</h2>
+    <div class="border p-6 rounded-lg shadow-lg">
+      <div class="flex items-center justify-center mb-4 gap-2">
+        <h2 class="text-xl font-bold mb-4">Bookmarked Articles</h2>
+        <h2 id="bookmark-length" class="text-xl font-bold mb-4 text-rose-500 bg-gray-200 py-2 px-4 rounded-full">0</h2>
+      </div>
       <ul id="bookmark-container" class="list-disc list-inside">
         <!-- Bookmarked articles will be rendered here -->
       </ul>

@@ -1,5 +1,6 @@
   const categoryContainer = document.getElementById('category-container');
   const newsContainer = document.getElementById('news-container');
+  const bookmarkLength = document.getElementById('bookmark-length');
   // array to store bookmarks
   const bookmarkContainer = document.getElementById('bookmark-container');
   let bookmarks = [];
@@ -96,10 +97,12 @@ const showBookmark = (bookmarks) => {
   bookmarks.forEach(bookmark => {
     bookmarkContainer.innerHTML += `
     <div class="border rounded-lg p-2 mb-2 shadow-xl">
-    <h1>${bookmark.title}</h1>
-    <button class="bg-red-500 text-white rounded-lg py-1 px-2 mt-2 cursor-pointer" onclick="removeBookmark('${bookmark.id}')">Remove</button>
+      <h1>${bookmark.title}</h1>
+      <button class="bg-red-500 text-white rounded-lg py-1 px-2 mt-2 cursor-pointer" onclick="removeBookmark('${bookmark.id}')">Remove</button>
     </div>
     `
+      bookmarkLength.innerText =bookmarks.length;
+
   })
 }
 
