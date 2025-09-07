@@ -1,3 +1,5 @@
+  const categoryContainer = document.getElementById('category-container');
+  const newsContainer = document.getElementById('news-container');
 
 
 function renderCategory() {
@@ -9,7 +11,6 @@ function renderCategory() {
 }
 
 function displayCategory(categories) {
-  const categoryContainer = document.getElementById('category-container');
   categoryContainer.innerHTML = "";
 
   categories.forEach(category => {
@@ -44,12 +45,11 @@ const loadNewsByCategory = (category_id) => {
 }
 
 const showNewsByCategory = (news) => {
-  console.log(news.articles);
-  const newsContainer = document.getElementById('news-container');
+  // console.log(news.articles);
   newsContainer.innerHTML = "";
 
   news.articles.forEach(article => {
-    console.log(article);
+    // console.log(article);
     if(article ){
       newsContainer.innerHTML += `
       <div class="border p-4 rounded-lg shadow-lg">
@@ -64,6 +64,13 @@ const showNewsByCategory = (news) => {
     }}
 )
 }
+
+
+newsContainer.addEventListener('click', (e) => {
+  if(e.target.classList.contains('btn')){
+    console.log('bookmark btn clicked');
+}})
+
 
 
 renderCategory();
