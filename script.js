@@ -32,6 +32,7 @@ function displayCategory(categories) {
     })
     // set indicator on clicked item
     if(e.target.localName === 'li'){
+      showLoading();
       e.target.classList.add('border-b-4');
       loadNewsByCategory(e.target.id);
       // console.log(e.target.id);
@@ -112,6 +113,13 @@ const removeBookmark = (id) => {
   showBookmark(bookmarks);
 }
 
+const showLoading = () => {
+  newsContainer.innerHTML = `
+  <div>
+    <h1 class="text-3xl font-bold text-center text-red-600">Loading...</h1>
+  </div>
+  `
+}
 
 renderCategory();
 loadNewsByCategory('main'); //default category
