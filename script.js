@@ -1,6 +1,8 @@
   const categoryContainer = document.getElementById('category-container');
   const newsContainer = document.getElementById('news-container');
-
+  // array to store bookmarks
+  const bookmarkContainer = document.getElementById('bookmark-container');
+  let bookmarks = [];
 
 function renderCategory() {
   const url = 'https://news-api-fs.vercel.app/api/categories';
@@ -53,11 +55,15 @@ const showNewsByCategory = (news) => {
     if(article ){
       newsContainer.innerHTML += `
       <div class="border p-4 rounded-lg shadow-lg">
+       <div>
         <img src="${article.image.srcset[5].url}" alt="${article.title}" class="w-full h-48 object-cover rounded-md mb-4">
+       </div>
+       <div id=${article.id}>
         <h2 class="text-xl font-bold mb-2">${article.title}</h2>
         <h2 class="text-md font-gray-300 font-bold mb-2">${article.time}</h2>
         <button class='btn bg-gray-400 rounded-lg py-2 px-4'>Bookmark</button>
-        </div>
+       </div>
+      </div>
       `
     } else {
       newsContainer.innerHTML  = `<h2 class="text-2xl font-bold">No news found in this category</h2>`;
@@ -68,9 +74,31 @@ const showNewsByCategory = (news) => {
 
 newsContainer.addEventListener('click', (e) => {
   if(e.target.classList.contains('btn')){
-    console.log('bookmark btn clicked');
-    console.log(e.target.parentNode.children[1].innerText);
+    // console.log('bookmark btn clicked');
+    renderBookmark(e);
 }})
+
+function renderBookmark(e){
+  const title = e.target.parentNode.children[0].innerText;
+    const id = e.target.parentNode.id;
+    // console.log(title, id);
+
+    // add to bookmark array
+    bookmarks.push({
+      id:id,
+      title:title});
+    console.log(bookmarks);
+    showBookmark(bookmarks);
+}
+
+const showBookmark = (bookmarks) => {
+  bookmarkContainer.innerHTML = "";
+  bookmarks.forEach(bookmark => {
+    bookmarkContainer.innerHTML += `
+    <li><a href="#" class="text-blue-500 hover:underline">${bookmark.title}</a></li>
+    `
+  })
+}
 
 
 
