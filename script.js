@@ -45,11 +45,17 @@ const loadNewsByCategory = (category_id) => {
   fetch(url)
   .then(res => res.json())
   .then(data => showNewsByCategory(data))
-  .catch(err => console.error("Error fetching data:", err));
+  .catch(err => {
+    showError(err);
+  });
 }
 
 const showNewsByCategory = (news) => {
   // console.log(news.articles);
+  if(news.articles.length === 0){
+    showEmptyMessage();
+    return;
+  }
   newsContainer.innerHTML = "";
 
   news.articles.forEach(article => {
@@ -117,6 +123,22 @@ const showLoading = () => {
   newsContainer.innerHTML = `
   <div>
     <h1 class="text-3xl font-bold text-center text-red-600">Loading...</h1>
+  </div>
+  `
+}
+
+const showError = (error) => {
+  newsContainer.innerHTML = `
+  <div>
+    <h1 class="text-3xl font-bold text-center text-red-600">Error: ${error}</h1>
+  </div>
+  `
+}
+
+const showEmptyMessage = () => {
+  newsContainer.innerHTML = `
+  <div>
+    <h1 class="text-3xl font-bold text-center text-red-600">No news found in this category</h1>
   </div>
   `
 }
